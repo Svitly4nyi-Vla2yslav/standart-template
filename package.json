@@ -2,7 +2,7 @@
   "name": "standart-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Svitly4nyi-Vla2yslav.github.io/standart-template",
+  "homepage": "https://svitly4nyi-vla2yslav.github.io/standart-template/",
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
