@@ -11,6 +11,7 @@ export const ModalBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  
 `;
 
 export const ModalContainer = styled.div`
@@ -18,4 +19,6 @@ export const ModalContainer = styled.div`
   padding: 2rem;
   border-radius: 8px;
   text-align: center;
+  background-color: ${(props) => props.theme.headerBackground};
+  color: ${(props) => props.theme.headerText};
 `;
