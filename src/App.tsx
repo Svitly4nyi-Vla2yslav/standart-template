@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import HomePage from "./pages/HomePage/HomePage";
