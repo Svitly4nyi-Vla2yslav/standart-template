@@ -1,22 +1,25 @@
-name: Deploy and Test
+name: Build and deploy
 
 on:
   push:
     branches:
-      - main # або будь-яка інша гілка, з якої ви деплоїте
+      - main  # або будь-яка інша гілка, з якої ви деплоїте
+
+env:
+  VITE_API_TEST: ${{ secrets.VITE_API_TEST }}
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '18'  # Вкажіть вашу версію Node.js
 
       - name: Install dependencies
         run: npm install
@@ -24,28 +27,12 @@ jobs:
       - name: Build project
         run: npm run build
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "18"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Configure Git
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+      - name: Copy index.html to 404.html
+        run: cp ./build/index.html ./build/404.html
 
       - name: Deploy to GitHub Pages
-        env:
-         VITE_API_TEST: ${{ secrets.VITE_API_TEST }}
-        run: npm run deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          folder: build  # Вказати папку, яка містить збудовані файли
+      
