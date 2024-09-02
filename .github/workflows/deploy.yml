@@ -3,7 +3,7 @@ name: Build and deploy
 on:
   push:
     branches:
-      - main  # або будь-яка інша гілка, з якої ви деплоїте
+      - main 
 
 env:
   VITE_API_TEST: ${{ secrets.VITE_API_TEST }}
@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Вкажіть вашу версію Node.js
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
@@ -34,5 +34,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages
-          folder: build  # Вказати папку, яка містить збудовані файли
+          folder: build  
       
